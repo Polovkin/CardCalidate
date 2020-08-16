@@ -28,14 +28,14 @@ const plugins = (type) => {
         new MiniCssExtractPlugin({
             filename: `${PATHS.assets}css/${fileName('css')}`,
         }),
-        // new CopyWebpackPlugin({
-        //     patterns: [
-        //         {from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img`},
-        //         //{from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts`},
-        //         //{from: `${PATHS.src}/pages/php`, to: ``},
-        //         //{from: `${PATHS.src}/static`, to: ''},
-        //     ]
-        // }),
+        new CopyWebpackPlugin({
+            patterns: [
+                {from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img`},
+                {from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts`},
+                //{from: `${PATHS.src}/pages/php`, to: ``},
+                //{from: `${PATHS.src}/static`, to: ''},
+            ]
+        }),
         new CleanWebpackPlugin(),
         //new BundleAnalyzerPlugin()
     ];

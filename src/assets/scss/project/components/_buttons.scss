@@ -1,16 +1,20 @@
 button {
-  $color: #a6ff00;
-  padding: 10px 25px;
-  border: 1px solid $color;
-  margin: 10px;
-  border-radius: 10px;
-  font-weight: bold;
-  color: $color;
+  background: linear-gradient(122.5deg, #5A4BE6 -33.07%, #73AFF7 48.35%, #93D0D9 139.94%);
+  border-radius: 4px;
+  color: $color__font--secondary;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
   transition: all .2s;
-  &:hover {
-    color: white;
-    background-color: $color;
-    border-color: $color;
-  }
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  position: relative;
+  overflow: hidden;
 
+  &:hover {
+    transform: scale(1.02) translateZ(0);
+  }
+  &:active {
+    top: 2px;
+  }
 }

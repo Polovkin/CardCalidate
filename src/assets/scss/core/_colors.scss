@@ -1,4 +1,4 @@
-$color__primary         : #ef5b4c;
+$color__primary         : #587BC3;
 $color__secondary       : #efe6e6;
 
 $color__light           : #fff;
@@ -9,7 +9,7 @@ $color__error           : #d23333;
 $color__success         : #51d720;
 //Font-color
 $color__font--primary    : #000000;
-$color__font--secondary  : #000000;
+$color__font--secondary  : $color__light;
 $color__font--hover      : $color__secondary;
 
 //Block-color

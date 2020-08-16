@@ -5,6 +5,17 @@ block variables
 
 
 block main
- .main.container
-    #app
+  main.main
+    .main__container
+      h1.main__title Добавление платежной карты
+      .main__content
+        .main__form
+          h3.main__content-title Номер карты
 
+          form(id="form")
+            +formItem('name','form')
+            .form__wrap
+              +formItem('cardDate','form')
+              +formItem('password','form')
+            p.form__text Для привязки карты мы проведем платеж в размере 1.00 UAH, который будет возвращен в течение 30 минут
+            button(type="submit") Получить деньги

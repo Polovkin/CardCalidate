@@ -1,0 +1,61 @@
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100px;
+  background: linear-gradient(90deg, #5a4be6 .26%, #73aff7 47.1%, #93d0d9 99.8%);
+  z-index: z(nav);
+
+  &__lang {
+    margin-right: 220px;
+    width: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+    line-height: 19px;
+    text-transform: uppercase;
+
+    &-item {
+      color: $color__font--secondary;
+      cursor: pointer;
+      font-family: Roboto, serif;
+
+      &:hover {
+        color: $color__primary;
+      }
+
+
+      &:first-child {
+        position: relative;
+        display: flex;
+        align-items: center;
+        &:after {
+          @include pseudoElement(1px);
+
+          background-color: $color__light;
+
+          height: 80%;
+          right: -10px;
+
+        }
+      }
+    }
+  }
+
+  @include breakpoint($phone__all) {
+    height: 65px;
+  }
+}
+
+.logotype {
+  max-width: 160px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  @include breakpoint($phone__all) {
+    max-width: 120px;
+  }
+}

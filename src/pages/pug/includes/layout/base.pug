@@ -2,14 +2,8 @@ include ../../utils/mixins
 -
   //Localization
 
-
-
-
   //Path
   imgPath = '/assets/img/'
-
-
-
 
   //Data
   contactData= {
@@ -18,8 +12,6 @@ include ../../utils/mixins
     phone2 : '+38 (098) 401-47-63',
     mail : 'hello@boto.agency',
   }
-
-
 
 block variables
 
@@ -30,5 +22,6 @@ html(lang=locale)
     title=title
     block head
   body
+    include ../layout/header
     block main
 

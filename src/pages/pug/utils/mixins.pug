@@ -39,14 +39,24 @@ mixin formItem(type,iD)
     let id = `${iD}__${type}`
     inputData = {
       name: {
-        pattern: '[A-Za-zА-Яа-яЁё]{3,20}$',
-        placeholder: 'name placeholder',
-        errorMsg: 'name error',
+        pattern: '[0-9]{4} *[0-9]{4} *[0-9]{4} *[0-9]{4}',
+        placeholder: '1234 5678 1234 5678',
+        errorMsg: 'данные введены неверно',
+        maxlength: '19',
       },
+      cardDate: {
+        pattern: '{5,5}$',
+        placeholder: '11 / 22',
+        errorMsg: 'данные введены неверно',
+        type: 'text',
+        maxlength: '5',
+      },
+
       password: {
-        pattern: '.{6,12}',
-        placeholder: 'password placeholder',
-        errorMsg: 'password error',
+        pattern: '.{3,3}',
+        placeholder: '***',
+        errorMsg: 'CVV введен неверно',
+        maxlength: '3',
       },
       tel: {
         pattern: '',
@@ -67,17 +77,19 @@ mixin formItem(type,iD)
         placeholder: ''
       },
     }
+
   if type !== 'textarea'
     label(for=id)
       input(
         id=id,
         form=iD,
-        type=type,
+        type=type===undefined ? type:inputData[type].type ,
         name=type,
         pattern=inputData[type].pattern,
         placeholder=inputData[type].placeholder,
         autocomplte="off",
-        required=type !== 'file'
+        required=type !== 'file',
+        maxlength=inputData[type].maxlength
         )
       span.error=inputData[type].errorMsg
   else
@@ -85,7 +97,7 @@ mixin formItem(type,iD)
       textarea(
         id=id,
         form=iD,
-        type=type,
+        type=type===undefined ? type:inputData[type].type ,
         name=type,
         placeholder=inputData[type].placeholder)
 
@@ -93,7 +105,7 @@ mixin FormGroup(id,items)
   form(id=id, action='')
     each item in items
       +formItem(item,id)
-    button(type="submit") send
+    button(type="submit") Получить деньги
 
 mixin Link(url,text,linkClass,blank,type)
   - linkClass = checkEmptyProp(linkClass)
