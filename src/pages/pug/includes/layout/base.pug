@@ -1,0 +1,34 @@
+include ../../utils/mixins
+-
+  //Localization
+
+
+
+
+  //Path
+  imgPath = '/assets/img/'
+
+
+
+
+  //Data
+  contactData= {
+    action : 'send.php',
+    phone : '+38 (063) 722-72-28',
+    phone2 : '+38 (098) 401-47-63',
+    mail : 'hello@boto.agency',
+  }
+
+
+
+block variables
+
+doctype html
+html(lang=locale)
+  head
+    include ../templates/baseHead
+    title=title
+    block head
+  body
+    block main
+

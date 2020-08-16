@@ -1,0 +1,217 @@
+$font__line-height: auto;
+$font__size: 18px;
+$font__weight: normal;
+$font__family: 'Lato';
+$font__style:  sans-serif;
+$font__file-name: 'Lato-';
+$font__path: '/assets/fonts/#{$font__file-name}';
+$font__ext: (woff2, woff, ttf, eot);
+$font__types: (
+                ('Light', 300, normal),
+                ('Bold', bold, normal),
+                ('Regular', normal, normal),
+);
+
+@each $name, $weight, $style in $font__types {
+  @include font-face($font__family, $font__path+$name, $weight, $style, $font__ext);
+}
+
+
+html {
+  font-size: $font__size;
+  line-height: $font__line-height;
+
+  height: 100%;
+  @include breakpoint ($desktop__laptop) {
+    font-size: 16px;
+  }
+  @include breakpoint($tablet__all) {
+    font-size: 15px;
+  }
+  @include breakpoint(($width__mobile-min + 1) $width__tablet-port) {
+    font-size: 14px;
+  }
+  @include breakpoint($width__min  ($width__mobile-min + 1)) {
+    font-size: 12px;
+  }
+}
+
+body {
+  font-family: $font__family , $font__style;
+  font-size: $font__size;
+  font-weight: $font__weight;
+
+  margin: 0;
+  padding: 0;
+
+  color: $color__font--primary;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  overflow: hidden;
+}
+
+button {
+  font: inherit;
+
+  padding: 0;
+
+  cursor: pointer;
+
+  color: inherit;
+  border: none;
+  background-color: transparent;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+
+  list-style-type: none;
+}
+
+p,
+a,
+b,
+span,
+li {
+  font-size: rem($font__size);
+}
+
+img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+}
+
+a {
+  transition: .3s;
+  text-decoration: none;
+  color: $color__font--primary;
+
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+
+    outline: 0;
+  }
+}
+
+p:last-of-type {
+  margin-bottom: 0;
+}
+
+h1 {
+  h2 {
+    font-size: 45px;
+    line-height: 60px;
+
+    @include breakpoint($tablet__all) {
+      font-size: 34px;
+      line-height: 46px;
+    }
+    @include breakpoint($phone__all) {
+      font-size: 30px;
+      line-height: 40px;
+    }
+
+    span {
+      font-size: 70px;
+      line-height: 94px;
+
+      @include breakpoint($tablet__all) {
+        font-size: 53px;
+        line-height: 70px;
+      }
+      @include breakpoint($phone__all) {
+        font-size: 45px;
+        line-height: 60px;
+      }
+    }
+  }
+
+  p {
+    font-size: 30px;
+    line-height: 40px;
+
+    @include breakpoint($tablet__all) {
+      font-size: 22px;
+      line-height: 30px;
+    }
+    @include breakpoint($phone__all) {
+      font-size: 20px;
+      line-height: 27px;
+    }
+  }
+}
+
+h2 {
+  font-size: 50px;
+  line-height: 67px;
+
+  @include breakpoint($tablet__all) {
+    font-size: 35px;
+    line-height: 47px;
+  }
+  @include breakpoint($phone__all) {
+    font-size: 30px;
+    line-height: 40px;
+  }
+}
+
+h3 {
+  font-size: 30px;
+  line-height: 40px;
+
+  @include breakpoint($phone__all) {
+    font-size: 25px;
+    line-height: 33px;
+  }
+}
+
+p {
+  font-size: 20px;
+  line-height: 33px;
+
+  @include breakpoint($mobile__all) {
+    line-height: 27px;
+  }
+}
+
+a {
+  font-size: 20px;
+  line-height: 27px;
+
+  @include breakpoint($tablet__all) {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
