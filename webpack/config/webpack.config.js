@@ -6,7 +6,6 @@ const fs = require('fs');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const {VueLoaderPlugin} = require('vue-loader');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
@@ -24,7 +23,6 @@ const PATHS = {
 const fileName = ext => isDev ? `[name].${ext}` : `[name].${ext}`
 const plugins = (type) => {
     const base = [
-        new VueLoaderPlugin(),
         new MiniCssExtractPlugin({
             filename: `${PATHS.assets}css/${fileName('css')}`,
         }),
@@ -167,21 +165,6 @@ module.exports = {
                 ],
             },
             {
-                // Vue
-                test: /\.vue$/,
-                loader: 'vue-loader',
-                options: {
-                    loader: {
-                        scss: 'vue-style-loader!css-loader!sass-loader',
-                    },
-                    postcss: {
-                        config: {
-                            path: PATHS.webpack,
-                        },
-                    },
-                },
-            },
-            {
                 // Fonts
                 test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
                 loader: 'file-loader',
@@ -276,7 +259,6 @@ module.exports = {
     resolve: {
         alias: {
             '~': PATHS.src,
-            'vue$': 'vue/dist/vue.js',
             '@': path.resolve(__dirname, '../../src'),
             '@img': path.resolve(__dirname, '../../src/assets/img/'),
         },
