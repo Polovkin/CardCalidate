@@ -6,7 +6,7 @@ $animation-slow          : .8s;
 
 //Loading ring
 // class = lds-ring > .div*4
-$ring-color                : rebeccapurple;
+$ring-color                :  #5a4be6;
 $ring-animation-duration   : 1.8s;
 $ring-weight               : 5px;
 
@@ -46,95 +46,6 @@ $ring-weight               : 5px;
 
     &:nth-child(3) {
       animation-delay: -.15s;
-    }
-  }
-}
-
-
-
-//Pulse circles
-//class= loader > .circle*3
-$loader-size        : 10rem;
-$loader-duration    : 2s;
-$loader-color       : #FFA5AB;
-.loader {
-  $loader-size: 10rem;
-
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  height: $loader-size;
-  width: $loader-size;
-  transform: translateX(-50%) translateY(-50%);
-
-  > .circle {
-    $loader-duration : 2s;
-
-    position: absolute;
-    height: inherit;
-    width: inherit;
-    background: $loader-color;
-    border-radius: 50%;
-    animation: animate-circle $loader-duration cubic-bezier(.9,.24,.62,.79) infinite;
-
-    &:nth-of-type(1) {
-      animation-delay: 0s;
-    }
-    &:nth-of-type(2) {
-      animation-delay: calc(#{$loader-duration} / -3);
-    }
-    &:nth-of-type(3) {
-      animation-delay: calc(#{$loader-duration} / -6);}
-  }
-}
-
-.animate-btn {
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-
-  font-weight: 500;
-  line-height: 20px;
-
-  outline: none;
-  text-decoration: none;
-  font-size: 20px;
-  letter-spacing: .5px;
-  background: #275efe;
-  color: #fff;
-  box-shadow: 0 2px 8px -1px #{rgba(#275efe, .32)};
-  transform: translateY(var(--y));
-  transition: transform .14s ease, box-shadow .14s ease;
-
-  div {
-    display: flex;
-    overflow: hidden;
-    text-shadow: 0 20px 0 #fff;
-    align-items: center;
-    span {
-      display: block;
-      backface-visibility: hidden;
-      font-style: normal;
-      transition: transform .14s ease;
-      transform: translateY(var(--m));
-      $i: 1;
-      @while $i < 18 {
-        &:nth-child(#{$i}) {
-          transition-delay: $i / 50 + s;
-        }
-        $i: $i + 1;
-      }
-    }
-  }
-
-  &:hover {
-    color: white;
-    --y: -4px;
-
-    span {
-      --m: calc(20px * -1);
     }
   }
 }

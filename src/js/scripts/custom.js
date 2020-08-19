@@ -121,6 +121,8 @@
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
+            let loader = document.querySelector('.lds-ring');
+            let button = document.querySelector('button[type="submit"]');
             let validDate = false;
             let validNumber = false;
 
@@ -138,11 +140,19 @@
                 validNumber = true;
             }
             if (validDate && validNumber) {
+                loader.classList.add('show');
+                button.classList.add('disable');
                 let inputs = document.querySelectorAll('input');
                 for (let j = 0; j < inputs.length; j++) {
                     inputs[j].classList.remove('invalid')
                 }
-                alert('valid')
+                setTimeout(()=>{
+                    button.classList.remove('disable');
+                    loader.classList.remove('show');
+                    alert('valid')
+                },2000)
+
+
                 //send dta
             }
         })

