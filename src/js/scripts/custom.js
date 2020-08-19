@@ -1,33 +1,14 @@
 (function () {
-        function sendFormDataXMLHttp(form) {
-            let request = new XMLHttpRequest();
-            request.open('POST', '/form/send.php', true)
-            request.setRequestHeader('accept', 'application/json');
+        function GetCardType(number)
+        {
+            let re = new RegExp("^4");
+            if (number.match(re) != null)
+                return "visa";
 
-            form.addEventListener('submit', function (event) {
-                event.preventDefault();
+            if (/^(5[1-5][0-9]{14}|2(22[1-9][0-9]{12}|2[3-9][0-9]{13}|[3-6][0-9]{14}|7[0-1][0-9]{13}|720[0-9]{12}))$/.test(number))
+                return "mastercard";
 
-                if (validNumber && validCVV && validDate) {
-                    let formData = new FormData(form);
-
-                    request.send(formData);
-
-                    request.onreadystatechange = function () {
-                        if (request.readyState < 4)
-                            console.log('Ответ от сервера полностью загружен')
-                        else if (request.readyState === 4) {
-                            if (request.status === 200 && request.status < 300) {
-                                console.log('200 - 299 = успешная отправка данных!')
-                                window.location.href = `http://misha.amemory.pro/`;
-                            } else {
-                                console.log('что-то пошло не так')
-                            }
-                        }
-                    }
-                } else {
-                    console.log('fail')
-                }
-            });
+            return "white";
         }
 
         function luhnAlgorithm(digits) {
@@ -101,10 +82,17 @@
             if (value.length > 0) {
                 value = value.match(new RegExp('.{1,4}', 'g')).join(" ");
             }
+            let icon = document.querySelector('.icon')
+            console.log(icon);
+
+
+            icon.style.opacity = `1`
+            icon.src = `/assets/img/icons/${GetCardType(value.replace(/\s/g, ''))}.svg`
             inputNumber.value = value
-            if (luhnAlgorithm(inputNumber.value.replace(/\s/g, ''))) {
+            if (luhnAlgorithm(value.replace(/\s/g, ''))) {
                 inputNumber.classList.remove('invalid');
             }
+
         })
 
         inputDate.addEventListener('keyup', (e) => {

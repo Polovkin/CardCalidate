@@ -50,8 +50,6 @@
 }
 
 #form {
-
-
   input {
     height: 55px;
     border: 1px solid #CCCCCC;
@@ -63,7 +61,26 @@
     }
 
   }
+  position: relative;
+
+  .icon {
+    opacity: 0;
+    z-index: z(content);
+    position: absolute;
+    @include size(30px);
+    background: {
+      image: url('/assets/icons/white.svg');
+      size: contain;
+      repeat: no-repeat;
+    };
+
+    top: 12px;
+    right: 20px;
+  }
+
 }
+
+
 
 .form {
   &__wrap {
