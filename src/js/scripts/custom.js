@@ -65,6 +65,12 @@
             return (year < currentYear || (year === currentYear && month < currentMonth))
         }
 
+        function errorMsg(input, msg) {
+            let error = input.parentElement.querySelector('.error')
+            input.classList.add('invalid')
+            error.innerHTML = msg;
+        }
+
         const form = document.querySelector('form')
         const inputNumber = form.querySelector('input[name="cardNumber"]')
         const inputDate = form.querySelector('input[name="cardDate"]')
@@ -80,7 +86,7 @@
                         errorMsg.style.opacity = '1';
                         setTimeout(function () {
                             errorMsg.style.opacity = '0';
-                        }, 3000)
+                        }, 5000)
                     } else {
                         errorMsg.style.opacity = '0';
                     }
@@ -96,7 +102,9 @@
                 value = value.match(new RegExp('.{1,4}', 'g')).join(" ");
             }
             inputNumber.value = value
-
+            if (luhnAlgorithm(inputNumber.value.replace(/\s/g, ''))) {
+                inputNumber.classList.remove('invalid');
+            }
         })
 
         inputDate.addEventListener('keyup', (e) => {
@@ -106,17 +114,28 @@
                 value = value.match(new RegExp('.{1,2}', 'g')).join("/");
             }
             inputDate.value = value;
+            if (!checkData(inputDate.value)) {
+                inputDate.classList.remove('invalid');
+            }
         })
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             let validDate = false;
             let validNumber = false;
-            if (!luhnAlgorithm(inputNumber.value.replace(/\s/g, ''))) {
-                inputNumber.classList.add('invalid')
-            }
+
+
             if (checkData(inputDate.value)) {
-                inputDate.classList.add('invalid')
+                inputDate.classList.add('invalid');
+                errorMsg(inputDate,'Срок карты недействителен')
+            } else {
+                validDate = true
+            }
+            if (!luhnAlgorithm(inputNumber.value.replace(/\s/g, ''))) {
+                inputNumber.classList.add('invalid');
+                errorMsg(inputNumber,'Некорректный номер карты')
+            } else {
+                validNumber = true;
             }
             if (validDate && validNumber) {
                 let inputs = document.querySelectorAll('input');

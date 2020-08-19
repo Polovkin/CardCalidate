@@ -43,12 +43,14 @@ mixin formItem(type,iD)
         placeholder: '1234 5678 1234 5678',
         errorMsg: 'данные введены неверно',
         maxlength: '19',
+        type: 'text'
       },
       cardNumber: {
         pattern: '[0-9]{4} *[0-9]{4} *[0-9]{4} *[0-9]{4}',
         placeholder: '1234 5678 1234 5678',
         errorMsg: 'данные введены неверно',
         maxlength: '19',
+        type: 'text'
       },
       cardDate: {
         pattern: '(?:0[1-9]|1[0-2])/[0-9]{2}',
@@ -56,6 +58,7 @@ mixin formItem(type,iD)
         errorMsg: 'данные введены неверно',
         type: 'text',
         maxlength: '5',
+        type: 'text'
       },
 
       password: {
@@ -63,6 +66,7 @@ mixin formItem(type,iD)
         placeholder: '***',
         errorMsg: 'CVV введен неверно',
         maxlength: '3',
+        type: 'password'
       },
       tel: {
         pattern: '',
@@ -89,7 +93,7 @@ mixin formItem(type,iD)
       input(
         id=id,
         form=iD,
-        type=type===undefined ? type:inputData[type].type ,
+        type=inputData[type].type ,
         name=type,
         pattern=inputData[type].pattern,
         placeholder=inputData[type].placeholder,

@@ -18,9 +18,12 @@ input[type='submit']:focus {
 
 //Input validations
 input.invalid {
-border: 1px solid $color__error !important;
+  border: 1px solid $color__error !important;
   color: $color__error !important;
 
+& + span.error {
+  opacity: 1 !important;
+}
 }
 
 input {
@@ -110,7 +113,6 @@ form label {
     position: relative;
     color: $color__error;
     font-size: 13px;
-    top: -7px;
     left: 7px;
     opacity: 0;
   }

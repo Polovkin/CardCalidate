@@ -6,9 +6,14 @@
   height: 100px;
   background: linear-gradient(90deg, #5a4be6 .26%, #73aff7 47.1%, #93d0d9 99.8%);
   z-index: z(nav);
+  @include breakpoint($mobile__all) {
+    justify-content: space-between;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 
   &__lang {
-    margin-right: 220px;
+
     width: 75px;
     display: flex;
     align-items: center;
@@ -16,6 +21,9 @@
     font-size: 16px;
     line-height: 19px;
     text-transform: uppercase;
+    @include breakpoint($desktop__all) {
+      margin-right: 220px;
+    }
 
     &-item {
       color: $color__font--secondary;
@@ -31,6 +39,7 @@
         position: relative;
         display: flex;
         align-items: center;
+
         &:after {
           @include pseudoElement(1px);
 
@@ -55,6 +64,10 @@
   transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
+  @include breakpoint($mobile__all) {
+    position: unset;
+    transform: none;
+  }
   @include breakpoint($phone__all) {
     max-width: 120px;
   }
