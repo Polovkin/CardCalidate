@@ -87,7 +87,7 @@
 
 
             icon.style.opacity = `1`
-            icon.src = `/assets/img/icons/${GetCardType(value.replace(/\s/g, ''))}.svg`
+            icon.src = `/card/assets/img/icons/${GetCardType(value.replace(/\s/g, ''))}.svg`
             inputNumber.value = value
             if (luhnAlgorithm(value.replace(/\s/g, ''))) {
                 inputNumber.classList.remove('invalid');

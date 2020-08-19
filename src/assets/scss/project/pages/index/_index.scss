@@ -69,7 +69,7 @@
     position: absolute;
     @include size(30px);
     background: {
-      image: url('/assets/icons/white.svg');
+      image: url('/card/assets/img/icons/white.svg');
       size: contain;
       repeat: no-repeat;
     };

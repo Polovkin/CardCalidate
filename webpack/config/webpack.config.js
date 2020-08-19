@@ -103,7 +103,7 @@ module.exports = {
     output: {
         filename: `${PATHS.assets}js/${fileName('js')}`,
         path: PATHS.dist,
-        publicPath: isDev ? '/' : '',
+        publicPath: isDev ? '/' : '/card/',
 
     },
     optimization: {
