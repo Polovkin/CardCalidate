@@ -16,6 +16,12 @@ input[type='submit']:focus {
   outline: 0;
 }
 
+//Input validations
+input.invalid {
+border: 1px solid $color__error !important;
+  color: $color__error !important;
+
+}
 
 input {
   box-shadow: none;
@@ -95,7 +101,7 @@ textarea {
 }
 
 
-form  label {
+form label {
   width: 100%;
   margin-bottom: 0;
 
@@ -115,6 +121,7 @@ form  label {
     font-size: rem($font__size);
 
     color: $color__font--primary;
+
     &::placeholder {
       color: $color__font--primary;
     }
